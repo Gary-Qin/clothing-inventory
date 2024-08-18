@@ -78,3 +78,8 @@ async function main() {
 }
 
 main();
+
+// SELECT clothing.name, categories.category
+// FROM clothing
+// JOIN clothing_categories ON clothing.id = clothing_categories.clothing_id
+// JOIN categories ON clothing_categories.category_id = categories.id;
