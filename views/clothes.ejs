@@ -3,11 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title><%= title %></title>
   </head>
   <body>
     <%- include("partials/header") %>
-    <div>Clothes</div>
+    
+    <div>
+      <h1><%= title %></h1>
+      <div id="clothes-container">
+        <% clothes.forEach(clothing => { %>
+          <div>
+            <a href=<%= `/clothing/${clothing.id}` %>>
+              <p><%= clothing.name %></p>
+              <img src=<%= `./images/${clothing.image_url}` %> alt=<%= `${clothing.name}` %> width="200" height="200">
+            </a>
+          </div>
+          <% }); %>
+      </div>
+    </div>
   </body>
 </html>

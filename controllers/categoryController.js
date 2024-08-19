@@ -1,11 +1,12 @@
 const db = require("../db/queries");
 
 const categoryCreateGet = (req, res) => {
-  res.send("create category page");
+  res.render("categoryform", { title: "Add Category" });
 };
 
 const categoryCreatePost = (req, res) => {
-  res.send("category created");
+  console.log(req.body);
+  res.redirect("/categories");
 };
 
 const categoryIdGet = async (req, res) => {

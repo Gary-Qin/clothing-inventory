@@ -38,4 +38,27 @@ body > div {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+#clothes-container {
+  display: flex;
+  gap: 20px;
+}
+
+#clothes-container > div > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#categories-container {
+  display: flex;
+  gap: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }

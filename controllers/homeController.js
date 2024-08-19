@@ -6,14 +6,12 @@ const homePageGet = (req, res) => {
 
 const categoriesPageGet = async (req, res) => {
   const categories = await db.getAllCategories();
-  console.log("Categories: ", categories);
-  res.render("categories", { title: "Categories" });
+  res.render("categories", { title: "Categories", categories: categories });
 };
 
 const clothesPageGet = async (req, res) => {
   const clothes = await db.getAllClothes();
-  console.log("Clothes: ", clothes);
-  res.render("clothes", { title: "Clothes" });
+  res.render("clothes", { title: "Clothes", clothes: clothes });
 };
 
 module.exports = { homePageGet, categoriesPageGet, clothesPageGet };

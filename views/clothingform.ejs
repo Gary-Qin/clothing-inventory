@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include("partials/header") %>
+
+    <div>
+      <h1><%= title %></h1>
+      <form method="POST" action="/clothing/create">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <label for="colour">Colour:</label>
+        <input type="text" id="colour" name="colour" />
+        <fieldset>
+          <legend>Size:</legend>
+          <div>
+            <input type="radio" id="XS" name="size" value="XS" checked />
+            <label for="XS">XS</label>
+          </div>
+          <div>
+            <input type="radio" id="S" name="size" value="S" checked />
+            <label for="XS">S</label>
+          </div>
+          <div>
+            <input type="radio" id="M" name="size" value="M" checked />
+            <label for="M">M</label>
+          </div>
+          <div>
+            <input type="radio" id="L" name="size" value="L" checked />
+            <label for="L">L</label>
+          </div>
+          <div>
+            <input type="radio" id="XL" name="size" value="XL" checked />
+            <label for="XL">XL</label>
+          </div>
+        </fieldset>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" min="1" max="100000" />
+        <fieldset>
+          <legend>Categories:</legend>
+          
+          <% categories.forEach(category => { %>
+            <div>
+              <input type="checkbox" checked=<%= false %> id= <%= `${category.category}` %> name="category" value=<%= `${category.category}` %> checked />
+              <label for=<%= `${category.category}` %>><%= `${category.category}` %></label>
+            </div>
+          <% }); %>
+          
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const inputs = document.getElementsByTagName('input');
+
+      for (let i = 0; i < inputs.length; i++)  {
+        if (inputs[i].type == 'checkbox')   {
+          inputs[i].checked = false;
+        }
+      }
+    </script>
+  </body>
+</html>

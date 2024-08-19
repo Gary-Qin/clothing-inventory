@@ -1,11 +1,13 @@
 const db = require("../db/queries");
 
-const clothingCreateGet = (req, res) => {
-  res.send("create clothing page");
+const clothingCreateGet = async (req, res) => {
+  const categories = await db.getAllCategories();
+  res.render("clothingform", { title: "Add Clothing", categories: categories });
 };
 
 const clothingCreatePost = (req, res) => {
-  res.send("clothing created");
+  console.log(req.body);
+  res.redirect("/clothes");
 };
 
 const clothingIdGet = async (req, res) => {
