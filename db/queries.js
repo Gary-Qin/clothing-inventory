@@ -29,7 +29,7 @@ async function getCategoryById(cid) {
 async function getCategoriesForClothing(cid) {
   const { rows } = await pool.query(
     `
-    SELECT categories.category 
+    SELECT categories.id, categories.category 
     FROM clothing
     JOIN clothing_categories ON clothing.id = clothing_categories.clothing_id
     JOIN categories ON clothing_categories.category_id = categories.id
@@ -54,6 +54,50 @@ async function getClothesForCategory(cid) {
   return rows;
 }
 
+async function createCategory(name) {
+  await pool.query("INSERT INTO categories (category) VALUES ($1)", [name]);
+}
+
+async function findCategoryIDs(categories) {
+  const ids = [];
+
+  await Promise.all(
+    (categories || []).map(async (category) => {
+      const { rows } = await pool.query(
+        `SELECT categories.id FROM categories WHERE categories.category = ($1);`,
+        [category]
+      );
+      ids.push(rows[0].id);
+    })
+  );
+
+  return ids;
+}
+
+async function createClothing(name, colour, size, stock, image_url, category) {
+  await pool.query(
+    "INSERT INTO clothing (name, colour, size, stock, image_url) VALUES ($1, $2, $3, $4, $5);",
+    [name, colour, size, stock, image_url]
+  );
+
+  const { rows } = await pool.query(
+    "SELECT clothing.id FROM clothing WHERE clothing.image_url = $1;",
+    [image_url]
+  );
+  const clothingID = rows[0].id;
+  const categoryIDs =
+    typeof category == "string"
+      ? await findCategoryIDs([category])
+      : await findCategoryIDs(category);
+
+  categoryIDs.forEach(async (categoryID) => {
+    await pool.query(
+      "INSERT INTO clothing_categories (clothing_id, category_id) VALUES ($1, $2);",
+      [clothingID, categoryID]
+    );
+  });
+}
+
 module.exports = {
   getAllClothes,
   getAllCategories,
@@ -61,4 +105,6 @@ module.exports = {
   getCategoryById,
   getCategoriesForClothing,
   getClothesForCategory,
+  createCategory,
+  createClothing,
 };

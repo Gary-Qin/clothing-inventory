@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS clothing (
   name VARCHAR ( 255 ),
   colour VARCHAR ( 31 ),
   size VARCHAR ( 31 ),
-  stock SMALLINT,
+  stock INT,
   image_url VARCHAR ( 255 )
 );
 
@@ -28,11 +28,11 @@ CREATE TABLE IF NOT EXISTS clothing_categories (
 
 INSERT INTO clothing (name, colour, size, stock, image_url) 
 VALUES
-  ('Cropped T-Shirt', 'Black', 'M', 47, 'cropped-tshirt.jpg'),
-  ('Drop Shoulder T-Shirt', 'Brown', 'L', 23, 'drop-shoulder-tshirt.jpg'),
-  ('Oversized Hoodie', 'Slate', 'M', 29, 'oversized-hoodie.jpg'),
-  ('Baggy Sweatpants', 'Gray', 'S', 18, 'baggy-sweatpants.jpg'),
-  ('Cargo Sweatshorts', 'Slate', 'S', 51, 'cargo-sweatshorts.jpg');
+  ('Cropped T-Shirt', 'Black', 'M', 47, 'https://res.cloudinary.com/drni8lcp2/image/upload/v1724726456/pxe3prs0g4jmyintwxsb.jpg'),
+  ('Drop Shoulder T-Shirt', 'Brown', 'L', 23, 'https://res.cloudinary.com/drni8lcp2/image/upload/v1724726435/fnqi3fsouc2dcis9dxl5.jpg'),
+  ('Oversized Hoodie', 'Slate', 'M', 29, 'https://res.cloudinary.com/drni8lcp2/image/upload/v1724726451/p76ifzrnfxjlawt8zgoa.jpg'),
+  ('Baggy Sweatpants', 'Gray', 'S', 18, 'https://res.cloudinary.com/drni8lcp2/image/upload/v1724726465/te4onoxnjgxb1o7qwj30.jpg'),
+  ('Cargo Sweatshorts', 'Slate', 'S', 51, 'https://res.cloudinary.com/drni8lcp2/image/upload/v1724726460/ek0j4mcy42ztribtkwge.jpg');
 
 INSERT INTO categories (category) 
 VALUES
