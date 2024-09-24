@@ -48,8 +48,8 @@ VALUES
   (1, 1), (1, 3),  -- Cropped T-Shirt belongs to Tops and Shirts
   (2, 1), (2, 3),  -- Drop Shoulder T-Shirt belongs to Tops and Shirts
   (3, 1), (3, 2),  -- Oversized Hoodie belongs to Tops and Hoodies
-  (4, 4), (4, 5),  -- Baggy Sweatpants belongs to Shirts and Bottoms
-  (5, 4), (5, 6);  -- Cargo Sweatshorts belongs to Bottoms and Pants
+  (4, 4), (4, 5),  -- Baggy Sweatpants belongs to Bottoms and Pants
+  (5, 4), (5, 6);  -- Cargo Sweatshorts belongs to Bottoms and Shorts
 `;
 
 async function main() {
@@ -78,8 +78,3 @@ async function main() {
 }
 
 main();
-
-// SELECT clothing.name, categories.category
-// FROM clothing
-// JOIN clothing_categories ON clothing.id = clothing_categories.clothing_id
-// JOIN categories ON clothing_categories.category_id = categories.id;

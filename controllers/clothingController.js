@@ -32,4 +32,14 @@ const clothingIdGet = async (req, res) => {
   res.render("clothingpage", { item: clothing[0], categories: categories });
 };
 
-module.exports = { clothingCreateGet, clothingCreatePost, clothingIdGet };
+const clothingDeletePost = async (req, res) => {
+  await db.deleteClothing(req.params.id);
+  res.redirect("/clothes");
+};
+
+module.exports = {
+  clothingCreateGet,
+  clothingCreatePost,
+  clothingIdGet,
+  clothingDeletePost,
+};

@@ -98,6 +98,22 @@ async function createClothing(name, colour, size, stock, image_url, category) {
   });
 }
 
+async function deleteCategory(cid) {
+  await pool.query(
+    "DELETE FROM clothing_categories WHERE category_id = ($1);",
+    [cid]
+  );
+  await pool.query("DELETE FROM categories WHERE id = ($1);", [cid]);
+}
+
+async function deleteClothing(cid) {
+  await pool.query(
+    "DELETE FROM clothing_categories WHERE clothing_id = ($1);",
+    [cid]
+  );
+  await pool.query("DELETE FROM clothing WHERE id = ($1);", [cid]);
+}
+
 module.exports = {
   getAllClothes,
   getAllCategories,
@@ -107,4 +123,6 @@ module.exports = {
   getClothesForCategory,
   createCategory,
   createClothing,
+  deleteCategory,
+  deleteClothing,
 };

@@ -15,4 +15,14 @@ const categoryIdGet = async (req, res) => {
   res.render("categorypage", { category: category[0], clothes: clothes });
 };
 
-module.exports = { categoryCreateGet, categoryCreatePost, categoryIdGet };
+const categoryDeletePost = async (req, res) => {
+  await db.deleteCategory(req.params.id);
+  res.redirect("/categories");
+};
+
+module.exports = {
+  categoryCreateGet,
+  categoryCreatePost,
+  categoryIdGet,
+  categoryDeletePost,
+};

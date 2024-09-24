@@ -10,5 +10,6 @@ clothingRouter.post(
   clothingController.clothingCreatePost
 );
 clothingRouter.get("/:id", clothingController.clothingIdGet);
+clothingRouter.post("/:id", clothingController.clothingDeletePost);
 
 module.exports = clothingRouter;
