@@ -24,6 +24,9 @@
       <form method="POST" action=<%= `/category/${category.id}` %>>
         <button name="foo" value="foo">Delete Category</button>
       </form>
+      <form method="GET" action=<%= `/category/${category.id}/edit` %>>
+        <button name="foo" value="foo">Edit Category</button>
+      </form>
     </div>
 
   </body>

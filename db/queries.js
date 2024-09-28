@@ -114,6 +114,15 @@ async function deleteClothing(cid) {
   await pool.query("DELETE FROM clothing WHERE id = ($1);", [cid]);
 }
 
+async function updateCategory(name, cid) {
+  await pool.query("UPDATE categories SET category = ($1) WHERE id = ($2);", [
+    name,
+    cid,
+  ]);
+}
+
+async function updateClothing() {}
+
 module.exports = {
   getAllClothes,
   getAllCategories,
@@ -125,4 +134,5 @@ module.exports = {
   createClothing,
   deleteCategory,
   deleteClothing,
+  updateCategory,
 };

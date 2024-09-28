@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include("partials/header") %>
+
+    <div>
+      <h1><%= title %></h1>
+      <form method="POST" action=<%= `/category/${category.id}/edit` %>>
+        <label for="category">Category:</label>
+        <input value=<%= `${category.category}` %> type="text" id="category" name="category" required/>
+        <button type="submit">Change</button>
+      </form>
+    </div>
+
+  </body>
+</html>

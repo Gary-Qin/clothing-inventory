@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include("partials/header") %>
+
+    <div>
+      <h1><%= title %></h1>
+      <form method="POST" action=<%= `/clothing/${clothing.id}/edit` %> enctype='multipart/form-data'>
+        <label for="name">Name:</label>
+        <input value="<%= clothing.name %>" type="text" id="name" name="name" required/>
+        <label for="colour">Colour:</label>
+        <input value="<%= clothing.colour %>" type="text" id="colour" name="colour" required/>
+        <fieldset>
+          <legend>Size:</legend>
+          <div>
+            <input type="radio" id="XS" name="size" value="XS" <%= clothing.size == "XS" ? "checked" : null %> />
+            <label for="XS">XS</label>
+          </div>
+          <div>
+            <input type="radio" id="S" name="size" value="S" <%= clothing.size == "S" ? "checked" : null %> />
+            <label for="XS">S</label>
+          </div>
+          <div>
+            <input type="radio" id="M" name="size" value="M" <%= clothing.size == "M" ? "checked" : null %> />
+            <label for="M">M</label>
+          </div>
+          <div>
+            <input type="radio" id="L" name="size" value="L" <%= clothing.size == "L" ? "checked" : null %> />
+            <label for="L">L</label>
+          </div>
+          <div>
+            <input type="radio" id="XL" name="size" value="XL" <%= clothing.size == "XL" ? "checked" : null %> />
+            <label for="XL">XL</label>
+          </div>
+        </fieldset>
+        <label for="stock">Stock:</label>
+        <input value=<%= clothing.stock %> type="number" id="stock" name="stock" min="1" max="100000" required/>
+        <input value="<%= clothing.image_url %>" type="file" id="image" name="image" accept="image/*" required>
+        <fieldset>
+          <legend>Categories:</legend>
+          
+          <% categories.forEach(category => { %>
+
+            <div>
+              <input type="checkbox" id= <%= `${category.category}` %> name="category" value=<%= `${category.category}` %>/>
+              <label for=<%= `${category.category}` %>><%= `${category.category}` %></label>
+            </div>
+          <% }); %>
+          
+        </fieldset>
+        <button type="submit">Change</button>
+      </form>
+    </div>
+
+  </body>
+</html>

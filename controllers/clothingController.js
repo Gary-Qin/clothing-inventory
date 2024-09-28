@@ -37,9 +37,30 @@ const clothingDeletePost = async (req, res) => {
   res.redirect("/clothes");
 };
 
+const clothingEditGet = async (req, res) => {
+  const clothing = await db.getClothingById(req.params.id);
+  const categories = await db.getAllCategories();
+  const clothing_categories = await db.getCategoriesForClothing(req.params.id);
+
+  res.render("editclothingpage", {
+    title: "Edit Clothing",
+    clothing: clothing[0],
+    categories: categories,
+    clothing_categories: clothing_categories,
+  });
+};
+
+const clothingEditPost = async (req, res) => {
+  console.log(req);
+  console.log(req.params);
+  res.redirect("/clothes");
+};
+
 module.exports = {
   clothingCreateGet,
   clothingCreatePost,
   clothingIdGet,
   clothingDeletePost,
+  clothingEditGet,
+  clothingEditPost,
 };

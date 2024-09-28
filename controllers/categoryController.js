@@ -20,9 +20,24 @@ const categoryDeletePost = async (req, res) => {
   res.redirect("/categories");
 };
 
+const categoryEditGet = async (req, res) => {
+  const category = await db.getCategoryById(req.params.id);
+  res.render("editcategorypage", {
+    title: "Edit Category",
+    category: category[0],
+  });
+};
+
+const categoryEditPost = async (req, res) => {
+  await db.updateCategory(req.body.category, req.params.id);
+  res.redirect("/categories");
+};
+
 module.exports = {
   categoryCreateGet,
   categoryCreatePost,
   categoryIdGet,
   categoryDeletePost,
+  categoryEditGet,
+  categoryEditPost,
 };

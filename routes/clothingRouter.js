@@ -11,5 +11,7 @@ clothingRouter.post(
 );
 clothingRouter.get("/:id", clothingController.clothingIdGet);
 clothingRouter.post("/:id", clothingController.clothingDeletePost);
+clothingRouter.get("/:id/edit", clothingController.clothingEditGet);
+clothingRouter.post("/:id/edit", clothingController.clothingEditPost);
 
 module.exports = clothingRouter;
