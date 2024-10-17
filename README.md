@@ -1,1 +1,1 @@
-# clothing_inventory
+# Clothing Inventory
