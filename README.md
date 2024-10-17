@@ -41,6 +41,6 @@ Run the app with:
 ***
 # Preview
 
-![Screenshot 2024-10-17 134015](https://github.com/user-attachments/assets/ddb7006c-6ed5-419f-a363-4b4fc7863096)
+![image](https://github.com/user-attachments/assets/57dfe3a7-5aca-4a2f-880e-0175cc9e423f)
 
-![image](https://github.com/user-attachments/assets/d61acce3-c745-4c0b-93b5-0c06c13b6f7c)
+![image](https://github.com/user-attachments/assets/20857c78-6af2-4879-be40-4e569c651939)
